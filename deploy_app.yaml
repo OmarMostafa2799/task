@@ -1,5 +1,5 @@
 - name: Deploy Node.js App Behind Nginx with Docker and Ansible on Amazon Linux 2
-  hosts: ec2
+  hosts: aws-web-server
   become: yes
 
   tasks:
@@ -39,7 +39,7 @@
       get_url:
         url: https://github.com/docker/compose/releases/latest/download/docker-compose-Linux-x86_64
         dest: /usr/local/bin/docker-compose
-        mode: +x'
+        mode: '0755'
 
     - name: Copy Dockerfile
       copy:
